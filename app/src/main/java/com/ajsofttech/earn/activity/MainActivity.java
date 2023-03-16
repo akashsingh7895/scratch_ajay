@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -32,6 +33,9 @@ import com.ajsofttech.earn.fragments.HomeFragment;
 import com.ajsofttech.earn.utils.Constant;
 import com.unity3d.ads.UnityAds;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private MainActivity activity;
@@ -40,11 +44,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     static final float END_SCALE = 0.7f;
     private RelativeLayout contentView;
 
+    String date,currentDate,todayDate;
+    //spinweel
+    int spinCounter = 0;
+    int spinTotal = 20;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         activity = this;
+
+
+        // daily limit spin wheel
+
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        currentDate  = sh.getString("date", "");
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        todayDate = df.format(Calendar.getInstance().getTime());
+        if(!currentDate.equals(todayDate)){
+            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+            myEdit.putString("date",todayDate);
+
+            myEdit.putInt("spinCounter",spinCounter);
+            myEdit.putInt("spinTotalLeft",spinTotal);
+
+            myEdit.commit();
+        }
+
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

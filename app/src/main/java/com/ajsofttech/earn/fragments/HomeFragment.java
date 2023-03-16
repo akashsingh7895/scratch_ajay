@@ -28,6 +28,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.ajsofttech.earn.activity.SpinWheelActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -190,7 +191,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent policyintent = new Intent(activity, ReferActivity.class);
+                    Intent policyintent = new Intent(activity, SpinWheelActivity.class);
                     policyintent.putExtra("type", "Silver Scratch");
                     startActivity(policyintent);
                 } catch (Exception e) {

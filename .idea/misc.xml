@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/bg1.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/bg11.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.23697916666666666" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.165" />
+        <entry key="..\:/Users/zeb/Downloads/Scratch CashApp Sdk update 2/Scratch CashApp Sdk update 2/app/src/main/res/layout/activity_refer.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/zeb/Downloads/Scratch CashApp Sdk update 2/Scratch CashApp Sdk update 2/app/src/main/res/layout/activity_spin_wheel.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/zeb/Downloads/Scratch CashApp Sdk update 2/Scratch CashApp Sdk update 2/app/src/main/res/layout/fragment_gold.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/zeb/Downloads/Scratch CashApp Sdk update 2/Scratch CashApp Sdk update 2/app/src/main/res/layout/fragment_home.xml" value="0.14" />
+        <entry key="..\:/Users/zeb/Downloads/Scratch CashApp Sdk update 2/Scratch CashApp Sdk update 2/app/src/main/res/layout/show_points_dialog.xml" value="0.33" />
+        <entry key="..\:/Users/zeb/Downloads/Scratch CashApp Sdk update 2/Scratch CashApp Sdk update 2/app/src/main/res/layout/toolbar.xml" value="0.16822916666666668" />
       </map>
     </option>
   </component>

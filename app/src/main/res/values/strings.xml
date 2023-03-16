@@ -49,7 +49,7 @@
 
     <!-- TODO home screen text change here -->
     <string name="daily_checkin_desc">Get daily checkin rewards</string>
-    <string name="silver_scratch_desc">Scratch silver card to win</string>
+    <string name="silver_scratch_desc">Spin Wheel to win</string>
     <string name="platinum_scratch_desc">Scratch platinum card to win</string>
     <string name="gold_scratch_desc">Scratch golden card to win</string>
     <string name="menu_my_wallet_desc">Manage and redeem points</string>
@@ -139,4 +139,10 @@
     <string name="enter_new_password">Enter New Password</string>
     <string name="change_passord">Submit</string>
     <string name="not_watch_full_video">Ohh ! You not watched full video so points will not be added to your wallet.</string>
+
+
+    <string name="applovin_sdk">K3Nf_7D5htbmWpmEzPHqiT5EtCI48VK61LI8bkxlt4agGdT078eyKxEewuh8sPw6S2-q9VbgmiMtNPck8ctAnQ</string>
+    <string name="Applovin_Inter">a09c0c8923b65012</string>
+
+
 </resources>

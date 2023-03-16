@@ -29,6 +29,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.ajsofttech.earn.activity.SpinWheelActivity;
+import com.applovin.mediation.MaxAd;
+import com.applovin.mediation.MaxAdListener;
+import com.applovin.mediation.MaxError;
+import com.applovin.mediation.ads.MaxInterstitialAd;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +47,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements MaxAdListener {
 
 
     private CardView referCardView, walletCardView, dailyCheckIn, silverCardView, platinumCardView, goldCardView, QurekaCardView, Qureka;
@@ -56,6 +60,8 @@ public class HomeFragment extends Fragment {
     String mainurl;
     String mainurl2;
     long mainurl3;
+
+    private MaxInterstitialAd interstitialAd;
 
     public HomeFragment() {
 
@@ -101,7 +107,9 @@ public class HomeFragment extends Fragment {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-
+        interstitialAd = new MaxInterstitialAd(getString(R.string.Applovin_Inter),getActivity());
+        interstitialAd.setListener(this);
+        interstitialAd.loadAd();
 
         DatabaseReference myRef1 = database.getReference("homebottom");
         myRef1.addValueEventListener(new ValueEventListener() {
@@ -143,39 +151,79 @@ public class HomeFragment extends Fragment {
         referCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Intent policyintent = new Intent(activity, ReferActivity.class);
-                    policyintent.putExtra("type", "refer");
-                    startActivity(policyintent);
-                } catch (Exception e) {
-                    Constant.showToastMessage(activity, e.getMessage());
+
+                if (interstitialAd.isReady()){
+                    interstitialAd.showAd();
+                    try {
+                        Intent policyintent = new Intent(activity, ReferActivity.class);
+                        policyintent.putExtra("type", "refer");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
+                }else {
+                    try {
+                        Intent policyintent = new Intent(activity, ReferActivity.class);
+                        policyintent.putExtra("type", "refer");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
                 }
+
+
             }
         });
 
         walletCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Intent policyintent = new Intent(activity, ReferActivity.class);
-                    policyintent.putExtra("type", "wallet");
-                    startActivity(policyintent);
-                } catch (Exception e) {
-                    Constant.showToastMessage(activity, e.getMessage());
+
+
+                if (interstitialAd.isReady()){
+                    interstitialAd.showAd();
+                    try {
+                        Intent policyintent = new Intent(activity, ReferActivity.class);
+                        policyintent.putExtra("type", "wallet");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
+                }else {
+                    try {
+                        Intent policyintent = new Intent(activity, ReferActivity.class);
+                        policyintent.putExtra("type", "wallet");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
                 }
+
             }
         });
 
         platinumCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Intent policyintent = new Intent(activity, ReferActivity.class);
-                    policyintent.putExtra("type", "Platinum Scratch");
-                    startActivity(policyintent);
-                } catch (Exception e) {
-                    Constant.showToastMessage(activity, e.getMessage());
+                if (interstitialAd.isReady()){
+                    interstitialAd.showAd();
+                    try {
+                        Intent policyintent = new Intent(activity, ReferActivity.class);
+                        policyintent.putExtra("type", "Platinum Scratch");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
+                }else {
+                    try {
+                        Intent policyintent = new Intent(activity, ReferActivity.class);
+                        policyintent.putExtra("type", "Platinum Scratch");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
                 }
+
             }
         });
 
@@ -190,13 +238,28 @@ public class HomeFragment extends Fragment {
         silverCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Intent policyintent = new Intent(activity, SpinWheelActivity.class);
-                    policyintent.putExtra("type", "Silver Scratch");
-                    startActivity(policyintent);
-                } catch (Exception e) {
-                    Constant.showToastMessage(activity, e.getMessage());
+
+
+                if (interstitialAd.isReady()){
+                    interstitialAd.showAd();
+                    try {
+                        Intent policyintent = new Intent(activity, SpinWheelActivity.class);
+                        policyintent.putExtra("type", "Silver Scratch");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
+                }else {
+                    try {
+                        Intent policyintent = new Intent(activity, SpinWheelActivity.class);
+                        policyintent.putExtra("type", "Silver Scratch");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
                 }
+
+
 
             }
         });
@@ -204,13 +267,28 @@ public class HomeFragment extends Fragment {
         goldCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Intent policyintent = new Intent(activity, ReferActivity.class);
-                    policyintent.putExtra("type", "Gold Scratch");
-                    startActivity(policyintent);
-                } catch (Exception e) {
-                    Constant.showToastMessage(activity, e.getMessage());
+
+
+                if (interstitialAd.isReady()){
+                    interstitialAd.showAd();
+                    try {
+                        Intent policyintent = new Intent(activity, ReferActivity.class);
+                        policyintent.putExtra("type", "Gold Scratch");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
+                }else {
+                    try {
+                        Intent policyintent = new Intent(activity, ReferActivity.class);
+                        policyintent.putExtra("type", "Gold Scratch");
+                        startActivity(policyintent);
+                    } catch (Exception e) {
+                        Constant.showToastMessage(activity, e.getMessage());
+                    }
                 }
+
+
 
             }
         });
@@ -325,6 +403,36 @@ public class HomeFragment extends Fragment {
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.intent.setPackage("com.android.chrome");
         customTabsIntent.launchUrl(getContext(), Uri.parse(url));}
+
+    @Override
+    public void onAdLoaded(MaxAd ad) {
+
+    }
+
+    @Override
+    public void onAdDisplayed(MaxAd ad) {
+
+    }
+
+    @Override
+    public void onAdHidden(MaxAd ad) {
+
+    }
+
+    @Override
+    public void onAdClicked(MaxAd ad) {
+
+    }
+
+    @Override
+    public void onAdLoadFailed(String adUnitId, MaxError error) {
+
+    }
+
+    @Override
+    public void onAdDisplayFailed(MaxAd ad, MaxError error) {
+
+    }
 
 
 //    public void qurekaopen(){

@@ -13,6 +13,7 @@ import com.ajsofttech.earn.fragments.PlatinumFragment;
 import com.ajsofttech.earn.fragments.ProfileFragment;
 import com.ajsofttech.earn.fragments.ReferFragment;
 import com.ajsofttech.earn.fragments.SilverFragment;
+import com.ajsofttech.earn.fragments.TestFragment;
 import com.ajsofttech.earn.fragments.WalletFragment;
 import com.ajsofttech.earn.utils.Constant;
 
@@ -47,8 +48,8 @@ public class ReferActivity extends AppCompatActivity {
                 case "refer":
                     fm = ReferFragment.newInstance();
                     break;
-                case "Silver Scratch":
-                    fm = SilverFragment.newInstance();
+                case "Spin and win":
+                    fm = TestFragment.newInstance();
                     break;
                 case "Platinum Scratch":
                     fm = PlatinumFragment.newInstance();

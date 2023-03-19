@@ -1,7 +1,7 @@
 package com.ajsofttech.earn.activity;
 
 import static com.ajsofttech.earn.FirebaseProperties.types;
-import static com.ajsofttech.earn.FirebaseProperties.unityid;
+
 import static com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE;
 
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ajsofttech.earn.FirebaseProperties;
 import com.ajsofttech.earn.FirebasePropertiesX;
 import com.ajsofttech.earn.Metadata;
+import com.ajsofttech.earn.ads.AdsConfig;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
@@ -84,16 +86,34 @@ public class SplashActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 FirebasePropertiesX metadata=dataSnapshot.getValue(FirebasePropertiesX.class);
 
-                FirebaseProperties.setHomelink(metadata.bannerId);
+                FirebaseProperties.setHomelink("https://"+metadata.bannerId);
                 FirebaseProperties.setUnityid(metadata.unityId);
-                FirebaseProperties.setSilverlink(metadata.silverLink);
-                FirebaseProperties.setGoldenlink(metadata.goldenLink);
+                FirebaseProperties.setSilverlink("https://"+metadata.silverLink);
+                FirebaseProperties.setGoldenlink("https://"+metadata.goldenLink);
                 FirebaseProperties.setBanner_id(metadata.bannerId);
                 FirebaseProperties.setInterstitial_id(metadata.interstitialId);
                 FirebaseProperties.setTypes(metadata.typesOf);
-                FirebaseProperties.setPlatinumlink(metadata.platinumLink);
+                FirebaseProperties.setPlatinumlink("https://"+metadata.platinumLink);
                 FirebaseProperties.setRewarded_id(metadata.rewardedId);
+                FirebaseProperties.isEnableAds=metadata.isEnableAds;
+                FirebaseProperties.intApplovin=metadata.intApplovin;
+                FirebaseProperties.intUnityAd=metadata.intUnityAd;
+                FirebaseProperties.adsNetworkName=metadata.adsNetworkName;
+                FirebaseProperties.unityGameID=metadata.unityGameID;
+
+
+                AdsConfig.loadAds(SplashActivity.this);
+
+
+
+
+
+
+                Log.d("sadsd","isEnableAds"+FirebaseProperties.isEnableAds);
+                Log.d("sadsd","adUnit"+FirebaseProperties.intApplovin);
+                Log.d("sadsd","adsNetworkName"+FirebaseProperties.adsNetworkName);
                // Toast.makeText(getApplicationContext(),"snapshot: "+FirebaseProperties.getGoldenlink(),Toast.LENGTH_LONG).show();
+
 
 
 
@@ -106,7 +126,7 @@ public class SplashActivity extends AppCompatActivity {
                     SharedPreferences.Editor myEdit = sharedPreferences.edit();
                     myEdit.putString("name", s);
                     myEdit.commit();
-                    UnityAds.initialize(SplashActivity.this, unityid, false);
+
                     //Constant.GotoNextActivity(activity, MainActivity.class, "");
 
                     String is_login = Constant.getString(activity, Constant.IS_LOGIN);

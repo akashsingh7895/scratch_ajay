@@ -33,6 +33,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.ajsofttech.earn.activity.SpinWheelActivity;
+import com.ajsofttech.earn.ads.AdsConfig;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ajsofttech.earn.R;
@@ -256,6 +258,9 @@ public class PlatinumFragment extends Fragment implements ScratchListener {
         TextView title_text = dialog.findViewById(R.id.title_text_points);
         TextView points_text = dialog.findViewById(R.id.points);
         AppCompatButton add_btn = dialog.findViewById(R.id.add_btn);
+
+        AdsConfig.showAd(getActivity());
+
         if (Constant.isNetworkAvailable(activity)) {
             if (addOrNoAddValue == 1) {
                 if (points.equals("0")) {
@@ -361,6 +366,8 @@ public class PlatinumFragment extends Fragment implements ScratchListener {
     }
 
     public void showDailog() {
+        AdsConfig.showAd(getActivity());
+
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.show_points_dialog);
@@ -381,6 +388,8 @@ public class PlatinumFragment extends Fragment implements ScratchListener {
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                AdsConfig.showAd(getActivity());
                 dialog.dismiss();
                 ShowRewarded();
             }
@@ -411,6 +420,9 @@ public class PlatinumFragment extends Fragment implements ScratchListener {
 
     @Override
     public void onScratchComplete() {
+
+        AdsConfig.showAd(getActivity());
+
         if (first_time) {
             first_time = false;
             Log.e("onScratch", "Complete");
@@ -458,8 +470,8 @@ public class PlatinumFragment extends Fragment implements ScratchListener {
     }
 
     @Override
-    public void onScratchStarted() {
-        if (Integer.parseInt(scratch_count_textView.getText().toString().trim()) <= 0) {
+    public void onScratchStarted()  {
+        if (Integer.parseInt(scratch_count_textView.getText().toString().replace("Your Today Scratch Count left =","").trim()) <= 0) {
             showDialogPoints(0, "0", 0, true);
         }
     }

@@ -2,7 +2,7 @@ package com.ajsofttech.earn.activity;
 
 
 
-import static com.ajsofttech.earn.FirebaseProperties.unityid;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -27,6 +27,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ajsofttech.earn.FirebaseProperties;
+import com.ajsofttech.earn.ads.AdsConfig;
+import com.facebook.ads.Ad;
 import com.google.android.material.navigation.NavigationView;
 import com.ajsofttech.earn.R;
 import com.ajsofttech.earn.fragments.HomeFragment;
@@ -59,6 +62,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // daily limit spin wheel
 
+
+        // load ads :
+
+
+
+
+
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         currentDate  = sh.getString("date", "");
 
@@ -88,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } catch (Exception e) {
             e.printStackTrace();
         }
-        UnityAds.initialize(MainActivity.this, unityid, false);
+
 
         contentView = findViewById(R.id.contentView);
         drawer = findViewById(R.id.drawer_layout);
@@ -101,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportFragmentManager().beginTransaction().add(R.id.content_frame, HomeFragment.newInstance()).commit();
         onClick();
         animateNavigationDrawer();
+
+
+
     }
 
     private void onClick() {

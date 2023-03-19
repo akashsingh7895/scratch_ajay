@@ -2,7 +2,59 @@ package com.ajsofttech.earn;
 
 public class FirebasePropertiesX {
 
-    public String homeLink,unityId,silverLink,goldenLink,bannerId,interstitialId,typesOf,platinumLink,rewardedId;
+    public String homeLink;
+    public String unityId;
+    public String silverLink;
+    public String goldenLink;
+    public String bannerId;
+    public String interstitialId;
+    public String typesOf;
+    public String platinumLink;
+    public String rewardedId;
+    public String intApplovin;
+
+    public String getUnityGameID() {
+        return unityGameID;
+    }
+
+    public void setUnityGameID(String unityGameID) {
+        this.unityGameID = unityGameID;
+    }
+
+    public String unityGameID;
+
+
+
+
+    public String getIntUnityAd() {
+        return intUnityAd;
+    }
+
+    public void setIntUnityAd(String intUnityAd) {
+        this.intUnityAd = intUnityAd;
+    }
+
+    public String intUnityAd;
+    public String adsNetworkName;
+    public boolean isEnableAds;
+
+    public String getAdUnit() {
+        return intApplovin;
+    }
+
+    public void setAdUnit(String adUnit) {
+        this.intApplovin = adUnit;
+    }
+
+    public String getAdsNetworkName() {
+        return adsNetworkName;
+    }
+
+    public void setAdsNetworkName(String adsNetworkName) {
+        this.adsNetworkName = adsNetworkName;
+    }
+
+
 
     public String getHomeLink() {
         return homeLink;

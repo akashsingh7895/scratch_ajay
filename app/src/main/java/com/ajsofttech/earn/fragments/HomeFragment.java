@@ -29,10 +29,9 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.ajsofttech.earn.activity.SpinWheelActivity;
-import com.applovin.mediation.MaxAd;
-import com.applovin.mediation.MaxAdListener;
-import com.applovin.mediation.MaxError;
-import com.applovin.mediation.ads.MaxInterstitialAd;
+
+import com.ajsofttech.earn.activity.SplashActivity;
+import com.ajsofttech.earn.ads.AdsConfig;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,7 +46,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HomeFragment extends Fragment implements MaxAdListener {
+public class HomeFragment extends Fragment {
 
 
     private CardView referCardView, walletCardView, dailyCheckIn, silverCardView, platinumCardView, goldCardView, QurekaCardView, Qureka;
@@ -61,7 +60,7 @@ public class HomeFragment extends Fragment implements MaxAdListener {
     String mainurl2;
     long mainurl3;
 
-    private MaxInterstitialAd interstitialAd;
+
 
     public HomeFragment() {
 
@@ -107,9 +106,7 @@ public class HomeFragment extends Fragment implements MaxAdListener {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        interstitialAd = new MaxInterstitialAd(getString(R.string.Applovin_Inter),getActivity());
-        interstitialAd.setListener(this);
-        interstitialAd.loadAd();
+
 
         DatabaseReference myRef1 = database.getReference("homebottom");
         myRef1.addValueEventListener(new ValueEventListener() {
@@ -132,11 +129,6 @@ public class HomeFragment extends Fragment implements MaxAdListener {
     }
 
     private void onClick() {
-
-
-
-
-
         Qureka.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,24 +143,13 @@ public class HomeFragment extends Fragment implements MaxAdListener {
         referCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (interstitialAd.isReady()){
-                    interstitialAd.showAd();
-                    try {
-                        Intent policyintent = new Intent(activity, ReferActivity.class);
-                        policyintent.putExtra("type", "refer");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
-                }else {
-                    try {
-                        Intent policyintent = new Intent(activity, ReferActivity.class);
-                        policyintent.putExtra("type", "refer");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
+                AdsConfig.showAd(getActivity());
+                try {
+                    Intent policyintent = new Intent(activity, ReferActivity.class);
+                    policyintent.putExtra("type", "refer");
+                    startActivity(policyintent);
+                } catch (Exception e) {
+                    Constant.showToastMessage(activity, e.getMessage());
                 }
 
 
@@ -179,24 +160,13 @@ public class HomeFragment extends Fragment implements MaxAdListener {
             @Override
             public void onClick(View v) {
 
-
-                if (interstitialAd.isReady()){
-                    interstitialAd.showAd();
-                    try {
-                        Intent policyintent = new Intent(activity, ReferActivity.class);
-                        policyintent.putExtra("type", "wallet");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
-                }else {
-                    try {
-                        Intent policyintent = new Intent(activity, ReferActivity.class);
-                        policyintent.putExtra("type", "wallet");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
+                AdsConfig.showAd(getActivity());
+                try {
+                    Intent policyintent = new Intent(activity, ReferActivity.class);
+                    policyintent.putExtra("type", "wallet");
+                    startActivity(policyintent);
+                } catch (Exception e) {
+                    Constant.showToastMessage(activity, e.getMessage());
                 }
 
             }
@@ -205,23 +175,12 @@ public class HomeFragment extends Fragment implements MaxAdListener {
         platinumCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (interstitialAd.isReady()){
-                    interstitialAd.showAd();
-                    try {
-                        Intent policyintent = new Intent(activity, ReferActivity.class);
-                        policyintent.putExtra("type", "Platinum Scratch");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
-                }else {
-                    try {
-                        Intent policyintent = new Intent(activity, ReferActivity.class);
-                        policyintent.putExtra("type", "Platinum Scratch");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
+                try {
+                    Intent policyintent = new Intent(activity, ReferActivity.class);
+                    policyintent.putExtra("type", "Platinum Scratch");
+                    startActivity(policyintent);
+                } catch (Exception e) {
+                    Constant.showToastMessage(activity, e.getMessage());
                 }
 
             }
@@ -231,6 +190,7 @@ public class HomeFragment extends Fragment implements MaxAdListener {
         dailyCheckIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AdsConfig.showAd(getActivity());
                 checkDaily();
             }
         });
@@ -238,58 +198,26 @@ public class HomeFragment extends Fragment implements MaxAdListener {
         silverCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                if (interstitialAd.isReady()){
-                    interstitialAd.showAd();
-                    try {
-                        Intent policyintent = new Intent(activity, SpinWheelActivity.class);
-                        policyintent.putExtra("type", "Silver Scratch");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
-                }else {
-                    try {
-                        Intent policyintent = new Intent(activity, SpinWheelActivity.class);
-                        policyintent.putExtra("type", "Silver Scratch");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
+                try {
+                    Intent policyintent = new Intent(activity, SpinWheelActivity.class);
+                    policyintent.putExtra("type", "Silver Scratch");
+                    startActivity(policyintent);
+                } catch (Exception e) {
+                    Constant.showToastMessage(activity, e.getMessage());
                 }
-
-
-
             }
         });
 
         goldCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                if (interstitialAd.isReady()){
-                    interstitialAd.showAd();
-                    try {
-                        Intent policyintent = new Intent(activity, ReferActivity.class);
-                        policyintent.putExtra("type", "Gold Scratch");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
-                }else {
-                    try {
-                        Intent policyintent = new Intent(activity, ReferActivity.class);
-                        policyintent.putExtra("type", "Gold Scratch");
-                        startActivity(policyintent);
-                    } catch (Exception e) {
-                        Constant.showToastMessage(activity, e.getMessage());
-                    }
+                try {
+                    Intent policyintent = new Intent(activity, ReferActivity.class);
+                    policyintent.putExtra("type", "Gold Scratch");
+                    startActivity(policyintent);
+                } catch (Exception e) {
+                    Constant.showToastMessage(activity, e.getMessage());
                 }
-
-
-
             }
         });
 
@@ -404,35 +332,6 @@ public class HomeFragment extends Fragment implements MaxAdListener {
         customTabsIntent.intent.setPackage("com.android.chrome");
         customTabsIntent.launchUrl(getContext(), Uri.parse(url));}
 
-    @Override
-    public void onAdLoaded(MaxAd ad) {
-
-    }
-
-    @Override
-    public void onAdDisplayed(MaxAd ad) {
-
-    }
-
-    @Override
-    public void onAdHidden(MaxAd ad) {
-
-    }
-
-    @Override
-    public void onAdClicked(MaxAd ad) {
-
-    }
-
-    @Override
-    public void onAdLoadFailed(String adUnitId, MaxError error) {
-
-    }
-
-    @Override
-    public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-
-    }
 
 
 //    public void qurekaopen(){

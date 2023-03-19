@@ -9,18 +9,20 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:elevation="5dp"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/bg"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_150sdp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/d"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
+                android:elevation="5dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -50,7 +52,6 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:background="@drawable/redeem_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -59,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/total_availiable_points"
                     android:textColor="@color/black"
+
                     android:textSize="@dimen/_12ssp" />
 
                 <LinearLayout
@@ -114,16 +116,18 @@
             android:id="@+id/pay_lyt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#F9F5EB"
             android:layout_below="@+id/bg">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
+                app:cardBackgroundColor="#F9F5EB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
                 android:elevation="@dimen/_8sdp"
                 app:cardCornerRadius="@dimen/_6sdp"
-                app:cardElevation="@dimen/_4sdp">
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -216,6 +220,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#F9F5EB"
             android:layout_below="@+id/pay_lyt">
 
             <androidx.cardview.widget.CardView
@@ -223,8 +228,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
                 android:elevation="@dimen/_8sdp"
+                app:cardBackgroundColor="#F9F5EB"
+
                 app:cardCornerRadius="@dimen/_6sdp"
-                app:cardElevation="@dimen/_4sdp">
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

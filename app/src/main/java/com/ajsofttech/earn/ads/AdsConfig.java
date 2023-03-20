@@ -30,7 +30,7 @@ public class AdsConfig {
                 AppLovinSdk.initializeSdk(activity, new AppLovinSdk.SdkInitializationListener() {
                     @Override
                     public void onSdkInitialized(AppLovinSdkConfiguration config) {
-                        interstitialAd = new MaxInterstitialAd(FirebaseProperties.intApplovin,activity);
+                        interstitialAd = new MaxInterstitialAd(activity.getResources().getString(R.string.str_applovin_ad),activity);
                         interstitialAd.loadAd();
                         Log.d("adasdas","loading applovin...");
                     }
